@@ -5,12 +5,26 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #bbc2cd;
+  background-image: url('./stripes.png'), url('./background.png');
+  background-repeat: repeat,repeat-x;
+  background-size: auto,contain;
+  -webkit-animation: snow 25s linear infinite;
+  animation: snow 25s linear infinite;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes snow {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
 }
 
 a {
@@ -32,7 +46,8 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 30px;
+  height: 80px;
   line-height: 1.1;
 }
 
@@ -40,7 +55,9 @@ h1 {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
