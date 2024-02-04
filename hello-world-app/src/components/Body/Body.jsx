@@ -2,8 +2,10 @@ import React from "react"
 export function Body(props) {
     const { content, color } = props
     return (
-        <main style={{ color: color,
-            width: '609px',}}>
+        <main style={{
+            color: color,
+            width: '609px',
+        }}>
             <p style={{
                 fontSize: '20px',
                 backgroundColor: '#2e4362d0',
@@ -14,7 +16,8 @@ export function Body(props) {
                 paddingTop: '6px',
                 paddingBottom: '6px',
                 border: '1px solid #132032',
-                textWrap:'normal'
+                textWrap: 'normal',
+                textAlign: 'justify'
             }}>{content}</p>
         </main>
     )
