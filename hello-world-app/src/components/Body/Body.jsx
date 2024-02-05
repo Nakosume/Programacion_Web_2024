@@ -4,18 +4,18 @@ export function Body(props) {
     return (
         <main style={{
             color: color,
-            width: '609px',
+            width: '100%',
+            fontSize: '20px',
+            backgroundColor: '#2e4362d0',
+            border: '1px solid #132032',
         }}>
             <p style={{
-                fontSize: '20px',
-                backgroundColor: '#2e4362d0',
                 height: 'auto',
                 margin: '0',
                 paddingLeft: '50px',
                 paddingRight: '50px',
                 paddingTop: '6px',
                 paddingBottom: '6px',
-                border: '1px solid #132032',
                 textWrap: 'normal',
                 textAlign: 'justify'
             }}>{content}</p>
