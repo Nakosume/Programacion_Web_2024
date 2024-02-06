@@ -8,7 +8,8 @@ export function Footer(props) {
             backgroundColor: '#2a2f36',
             borderBottomLeftRadius: '10px',
             borderBottomRightRadius: '10px',
-            marginTop:'auto'
+            marginTop:'auto',
+            fontSize:'0.9rem'
         }}>
             <h1 style={{
                 paddingLeft: '55px',

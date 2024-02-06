@@ -6,11 +6,14 @@ export function Header(props) {
     return (
         <header style={{
             color: color,
-            width: '613px',
+            width: '100%',
+            height:'auto',
             backgroundImage: `url(${background})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "fill",
+            backgroundPosition: 'left',
             marginBottom: 'auto',
+            fontSize:'0.9rem'
         }}>
             <h1 style={{
                 margin: '0',
