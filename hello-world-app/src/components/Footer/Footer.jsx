@@ -16,6 +16,7 @@ export function Footer(props) {
                 paddingRight: '5vh',
                 paddingTop: '1.5vh',
                 paddingBottom: '1.5vh',
+                width: 'fit-content',
                 height: 'auto',
                 margin: '0'
             }}>{content}</h1>
