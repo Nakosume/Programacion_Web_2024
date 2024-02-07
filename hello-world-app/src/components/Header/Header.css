@@ -1,0 +1,28 @@
+header {
+    width: auto;
+    height:'auto';
+    background: linear-gradient(90deg, rgba(48,46,73,1) 18%, rgba(50,50,130,1) 60%, rgba(96,123,184,1) 100%);
+    margin-bottom: 2vh;
+    font-size:1.1rem;
+    display: 'flex';
+    flex-direction:column;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
+.optContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.opts{
+    margin: 0;
+    width: fit-content;
+    height: auto;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    display: flex;
+    align-items: center;
+}

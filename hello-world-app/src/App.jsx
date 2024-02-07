@@ -7,7 +7,7 @@ import { ImgDisplay } from "./components/ImgDisplay/ImgDisplay"
 export default function App() {
     return (
 
-        <div>
+        <div className="appContainer">
             <Header content='Landing page' color='azure' />
 
             <ImgDisplay></ImgDisplay>            
