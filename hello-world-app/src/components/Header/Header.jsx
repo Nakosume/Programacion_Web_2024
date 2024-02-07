@@ -1,6 +1,4 @@
 import React from "react"
-import background from './title_top.png'
-import logo from './logo_ngs_ver2.png'
 
 export function Header(props) {
     const { content, color } = props
@@ -9,7 +7,7 @@ export function Header(props) {
     return (
         <header style={{
             color: color,
-            width: '100%',
+            width: 'auto',
             height:'auto',
             /*backgroundImage: `url(${background})`,
             backgroundRepeat: "no-repeat",
@@ -17,7 +15,7 @@ export function Header(props) {
             backgroundPosition: 'left',*/
             background: 'linear-gradient(90deg, rgba(48,46,73,1) 18%, rgba(50,50,130,1) 60%, rgba(96,123,184,1) 100%)',
             marginBottom: '2vh',
-            fontSize:'0.8rem',
+            fontSize:'1rem',
             /* borderTopLeftRadius: '2vh',
             borderTopRightRadius: '2vh', */
             display: 'flex',
@@ -25,11 +23,17 @@ export function Header(props) {
             alignItems:'center',
             flexWrap:'wrap'
         }}>
-            <img src={logo} style={{
+            <img src={'https://pso2.com/players/update/ver2/img/logo_ngs_ver2.png'} style={{
                 height:'9vh',
                 width: 'auto'
             }}></img>
 
+            <div style={{
+                display: 'flex',
+                flexDirection:'row',
+                paddingLeft: '2rem',
+                paddingRight: '2rem',
+            }}>
             {
                 options.map((option)=>
                 <h3 key={{option}} style={{
@@ -39,10 +43,13 @@ export function Header(props) {
                     paddingLeft: '1vh',
                     paddingRight: '1vh',
                     paddingTop: '1.5vh',
-                    paddingBottom: '1.5vh'
+                    paddingBottom: '1.5vh',
+                    display:'flex',
+                    alignItems:'center'
                 }}>{option}</h3>
                 )
             }
+            </div>
 
             
         </header>

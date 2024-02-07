@@ -4,8 +4,8 @@ export function Body(props) {
     return (
         <main style={{
             color: color,
-            width: '100%',
-            fontSize: '1rem', //new
+            width: 'auto',
+            fontSize: '1.2rem', //new
             backgroundColor: '#2e4362d0',
             border: '1px solid #132032',
         }}>
