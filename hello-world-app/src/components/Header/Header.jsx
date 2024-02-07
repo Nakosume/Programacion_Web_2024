@@ -9,15 +9,9 @@ export function Header(props) {
             color: color,
             width: 'auto',
             height:'auto',
-            /*backgroundImage: `url(${background})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "fill",
-            backgroundPosition: 'left',*/
             background: 'linear-gradient(90deg, rgba(48,46,73,1) 18%, rgba(50,50,130,1) 60%, rgba(96,123,184,1) 100%)',
             marginBottom: '2vh',
             fontSize:'1rem',
-            /* borderTopLeftRadius: '2vh',
-            borderTopRightRadius: '2vh', */
             display: 'flex',
             flexDirection:'row',
             alignItems:'center',
