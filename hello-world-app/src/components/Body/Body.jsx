@@ -1,13 +1,13 @@
-import React from "react"
+//import React from "react"
 import './Body.css'
 
 export function Body(props) {
-    const { content, color } = props
+    const { content, color,bgColor,border } = props
     return (
         <main className="textContainer" style={{
             color: color,
-            backgroundColor: '#2e4362d0',
-            border: '1px solid #132032',
+            backgroundColor: bgColor,
+            border: border,
         }}>
             <p className="text" style={{
                 
