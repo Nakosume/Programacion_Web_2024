@@ -23,9 +23,14 @@ export function Header(props) {
             }}>
                 {
                     options.map((option) =>
-                        <h3 className="opts" key={{ option }} style={{
-
-                        }}>{option}</h3>
+                        <div className='dropdown'>
+                            <button className="opts" key={{ option }}>{option}</button>
+                            <div class="dropdown-content">
+                                <a href="#">Link 1</a>
+                                <a href="#">Link 2</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
                     )
                 }
             </div>
