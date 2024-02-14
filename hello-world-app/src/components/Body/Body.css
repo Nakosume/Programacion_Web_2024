@@ -1,0 +1,15 @@
+.textContainer{
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.text{
+    height: auto;
+    margin: 0%;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    text-wrap: normal;
+    text-align: left;
+}
