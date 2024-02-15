@@ -10,7 +10,7 @@ header {
     flex-wrap: wrap;
 }
 
-.optContainer {
+.opt-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -63,8 +63,8 @@ header {
     display: block;
 }
 
-@media(min-width: 413px) {
-    .optContainer {
+@media(min-width: 431px) {
+    .opt-container {
         flex-direction: row;
         justify-content: space-evenly;
     }

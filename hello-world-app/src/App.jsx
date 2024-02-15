@@ -14,7 +14,7 @@ export default function App() {
 
     return (
 
-        <div className="appContainer">
+        <div className="app-container">
             <Header content='Landing page' color='azure' />
 
             <ImgDisplay></ImgDisplay>

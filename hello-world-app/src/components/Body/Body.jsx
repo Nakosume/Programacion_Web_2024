@@ -4,7 +4,7 @@ import './Body.css'
 export function Body(props) {
     const { content, color,bgColor,border } = props
     return (
-        <main className="textContainer" style={{
+        <main className="text-container" style={{
             color: color,
             backgroundColor: bgColor,
             border: border,

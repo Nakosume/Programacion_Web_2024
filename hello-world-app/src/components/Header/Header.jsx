@@ -27,7 +27,7 @@ export function Header(props) {
 
             {
                 showMenu ?
-                <div className="optContainer" style={{
+                <div className="opt-container" style={{
 
                 }}>
                     {
