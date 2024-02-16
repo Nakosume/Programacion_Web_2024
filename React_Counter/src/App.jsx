@@ -1,18 +1,13 @@
 import React from "react"
-import { useState } from "react"
+import { Main } from "./components/Main/Main"
 
 
 export default function App() {
-    const [showMenu, setShowMenu] = useState(false)
-
-    const handleClick = (event) => {
-        setShowMenu(!showMenu)
-    }
 
     return (
 
         <div className="appContainer">
-            <h1>bye bye</h1>
+            <Main></Main>
         </div>
     )
 }
