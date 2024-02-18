@@ -2,7 +2,8 @@ import './Main.css'
 import { useState } from 'react'
 
 export function Main() {
-    let [numVal, setNumVal] = useState(5)
+    const startNum = 5
+    let [numVal, setNumVal] = useState(startNum)
 
     const addHandleClick = (event) => {
         setNumVal(numVal + 1)
@@ -12,21 +13,29 @@ export function Main() {
         setNumVal(numVal - 1)
     }
 
+    const resetHandleClick = (event) => {
+        setNumVal(startNum)
+    }
+
     return (
-        <main style={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            {   
-                numVal>0?
-                <button onClick={decreaseHandleClick}>-</button>
-                :null
-            }
-            <h1>{numVal}</h1>
-            <button onClick={addHandleClick}>+</button>
+        <main className='main-container'>
+            <div className='counter-container'>
+                {
+                    numVal > 0 ?
+                        <button onClick={decreaseHandleClick}>-</button>
+                        : <button style={{ backgroundColor: 'red' }}>-</button>
+                }
+                <h1 style={{
+                    margin: '0px'
+                }}>{numVal}</h1>
+                <button onClick={addHandleClick}>+</button>
+            </div>
+
+            <div>
+                <button onClick={resetHandleClick} style={{
+                    backgroundColor: 'green'
+                }}>Reset Counter</button>
+            </div>
         </main>
     )
 }
