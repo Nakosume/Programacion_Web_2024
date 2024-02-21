@@ -10,11 +10,25 @@ header {
     flex-wrap: wrap;
 }
 
+.icon{
+    height: 9vh;
+    width: auto;
+}
+
+.hambur-ico{
+    height: 2vh;
+    width: auto;
+    position: absolute;
+    left: 2vh;
+    top: 3vh;
+}
+
 .opt-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+}
+
+.hidden{
+    display: none;
 }
 
 .dropdown {
@@ -64,7 +78,17 @@ header {
 }
 
 @media(min-width: 431px) {
+
+    .hambur-ico{
+        display: none;
+    }
+
+    .hidden{
+        display: block;
+    }
+
     .opt-container {
+        display: flex;
         flex-direction: row;
         justify-content: space-evenly;
     }

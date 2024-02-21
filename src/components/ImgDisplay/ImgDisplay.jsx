@@ -15,7 +15,7 @@ export function ImgDisplay () {
     >
       {
                 imags.map((imgs) =>
-                  <img src={imgs} key={imgs.id} />
+                  <img className='banner-img' src={imgs} key={imgs.id} />
                 )
             }
     </div>
