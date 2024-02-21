@@ -10,12 +10,12 @@ header {
     flex-wrap: wrap;
 }
 
-.icon{
+.icon {
     height: 9vh;
     width: auto;
 }
 
-.hambur-ico{
+.hambur-ico {
     height: 2vh;
     width: auto;
     position: absolute;
@@ -24,10 +24,10 @@ header {
 }
 
 .opt-container {
-    width: 100%;
+    width: 100vw;
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
@@ -78,19 +78,28 @@ header {
 }
 
 @media(min-width: 431px) {
+    header {
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
-    .hambur-ico{
+    .hambur-ico {
         display: none;
     }
 
-    .hidden{
+    .hidden {
         display: block;
     }
 
     .opt-container {
+        width: 45vw;
+        height: 87.3px;
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
+        align-items: center;
     }
 
     .dropdown-content {
