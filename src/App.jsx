@@ -8,7 +8,10 @@ import { ImgDisplay } from './components/ImgDisplay/ImgDisplay'
 export default function App () {
   return (
 
-    <div>
+    <div style={{
+      maxWidth: '100%'
+    }}
+    >
       <Header content='Landing page' color='azure' />
 
       <ImgDisplay />
