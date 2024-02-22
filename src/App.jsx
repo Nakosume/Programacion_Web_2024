@@ -1,9 +1,6 @@
 import React from 'react'
 
-import { Header } from './components/Header/Header'
-import { Body } from './components/Body/Body'
-import { Footer } from './components/Footer/Footer'
-import { ImgDisplay } from './components/ImgDisplay/ImgDisplay'
+import { Body, Header, Footer, ImgDisplay } from './components'
 
 export default function App () {
   return (
