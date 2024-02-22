@@ -23,7 +23,7 @@ export function Main () {
 
   const imgHandleClick2 = (event) => {
     setImagHandle2(!showImg2)
-    console.log(showImg1)
+    console.log(showImg2)
   }
 
   const resetHandleClick = (event) => {
@@ -32,7 +32,7 @@ export function Main () {
 
   const imgHandleClick3 = (event) => {
     setImagHandle3(!showImg3)
-    console.log(showImg1)
+    console.log(showImg3)
   }
 
   return (
