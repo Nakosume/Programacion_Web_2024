@@ -2,14 +2,14 @@ import { Button } from '../Button/Button'
 import './Main.css'
 import { useState } from 'react'
 
-export function Main () {
-  const startNum = 5
+export function Main (props) {
+  const { startNum } = props
   const [numVal, setNumVal] = useState(startNum)
   const [showImg1, setImagHandle1] = useState(false)
   const [showImg2, setImagHandle2] = useState(false)
   const [showImg3, setImagHandle3] = useState(false)
 
-  const addHandleClick = (event) => {
+  const add = (event) => {
     setNumVal(numVal + 1)
   }
   const imgHandleClick1 = (event) => {
@@ -17,7 +17,7 @@ export function Main () {
     console.log(showImg1)
   }
 
-  const decreaseHandleClick = (event) => {
+  const drecrease = (event) => {
     setNumVal(numVal - 1)
   }
 
@@ -40,7 +40,7 @@ export function Main () {
       <div className='counter-container'>
         {
                     numVal > 0
-                      ? <Button content='-' clickAction={decreaseHandleClick} downAction={imgHandleClick2} upAction={imgHandleClick2} />
+                      ? <Button content='-' clickAction={drecrease} downAction={imgHandleClick2} upAction={imgHandleClick2} />
                       : <Button content='-' name='no-button' />
                 }
         <h1 style={{
@@ -48,7 +48,7 @@ export function Main () {
         }}
         >{numVal}
         </h1>
-        <Button content='+' clickAction={addHandleClick} downAction={imgHandleClick1} upAction={imgHandleClick1} />
+        <Button content='+' clickAction={add} downAction={imgHandleClick1} upAction={imgHandleClick1} />
       </div>
 
       <div>

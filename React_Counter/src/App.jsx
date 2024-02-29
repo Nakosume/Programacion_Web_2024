@@ -8,7 +8,7 @@ export default function App () {
 
     <>
       <Header />
-      <Main />
+      <Main startNum={69} />
       <Footer />
     </>
   )
