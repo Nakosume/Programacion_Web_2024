@@ -16,6 +16,7 @@ export function TodoList () {
   ])
 
   const [text, setText] = useState('')
+
   function addTask (text) {
     const newTask = {
       id: Date.now(),
@@ -24,6 +25,30 @@ export function TodoList () {
     }
     setTasks([...tasks, newTask])
     setText('')
+  }
+
+  /* useEffect(() => {
+    const keyDownHandler = event => {
+      if (event.key === 'Enter') {
+        event.preventDefault()
+        console.log('User pressed: ', event.key)
+
+        // call submit function here
+        addTask(text)
+      }
+    }
+
+    document.addEventListener('keydown', keyDownHandler)
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler)
+    }
+  }, []) */
+
+  const handleSubmit = event => {
+    event.preventDefault()
+
+    addTask(text)
   }
 
   function deleteTask (id) {
@@ -41,12 +66,26 @@ export function TodoList () {
   }
 
   return (
-    <div className='todo-list'>
-      <input
-        value={text}
-        onChange={e => setText(e.target.value)}
-      />
-      <button onClick={() => addTask(text)}>Add</button>
+    <div
+      className='todo-list' style={{
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
+      <form
+        onSubmit={handleSubmit}
+        className='add-bar' style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-evenly'
+        }}
+      >
+        <input
+          value={text}
+          onChange={e => setText(e.target.value)}
+        />
+        <button type='submit'>Add</button>
+      </form>
       {tasks.map(task => (
         <TodoItem
           key={task.id}
