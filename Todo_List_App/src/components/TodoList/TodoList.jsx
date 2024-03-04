@@ -1,21 +1,13 @@
 import React, { useState } from 'react'
 import TodoItem from '../TodoItem/TodoItem'
+import { TASKS } from '../../const/tasks'
 
 export function TodoList () {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Doctor Appointment',
-      completed: true
-    },
-    {
-      id: 2,
-      text: 'Meeting at School',
-      completed: false
-    }
-  ])
+  const [tasks, setTasks] = useState(TASKS)
 
   const [text, setText] = useState('')
+
+  // const [filter, setFilter] = useState('All')
 
   function addTask (text) {
     const newTask = {
@@ -26,24 +18,6 @@ export function TodoList () {
     setTasks([...tasks, newTask])
     setText('')
   }
-
-  /* useEffect(() => {
-    const keyDownHandler = event => {
-      if (event.key === 'Enter') {
-        event.preventDefault()
-        console.log('User pressed: ', event.key)
-
-        // call submit function here
-        addTask(text)
-      }
-    }
-
-    document.addEventListener('keydown', keyDownHandler)
-
-    return () => {
-      document.removeEventListener('keydown', keyDownHandler)
-    }
-  }, []) */
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -86,6 +60,18 @@ export function TodoList () {
         />
         <button type='submit'>Add</button>
       </form>
+      <div>
+        <input type='radio' id='all' name='show' checked />
+        <label for='all'>All</label>
+      </div>
+      <div>
+        <input type='radio' id='complete' name='show' />
+        <label for='complete'>Complete</label>
+      </div>
+      <div>
+        <input type='radio' id='pending' name='show' />
+        <label for='pending'>Pending</label>
+      </div>
       {tasks.map(task => (
         <TodoItem
           key={task.id}
@@ -94,7 +80,6 @@ export function TodoList () {
           toggleCompleted={toggleCompleted}
         />
       ))}
-
     </div>
   )
 }
