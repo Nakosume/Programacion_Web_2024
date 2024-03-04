@@ -7,7 +7,14 @@ export function TodoList () {
 
   const [text, setText] = useState('')
 
-  // const [filter, setFilter] = useState('All')
+  const [filter, setFilter] = useState('all')
+
+  const filteredTodos = tasks.filter((todo) => {
+    if (filter === 'all') return true
+    if (filter === 'completed') return todo.completed
+    if (filter === 'pending') return !todo.completed
+    return true
+  })
 
   function addTask (text) {
     const newTask = {
@@ -61,25 +68,25 @@ export function TodoList () {
         <button type='submit'>Add</button>
       </form>
       <div>
-        <input type='radio' id='all' name='show' checked />
+        <input type='radio' id='all' name='show' checked onClick={() => setFilter('all')} />
         <label for='all'>All</label>
       </div>
       <div>
-        <input type='radio' id='complete' name='show' />
-        <label for='complete'>Complete</label>
+        <input type='radio' id='complete' name='show' onClick={() => setFilter('completed')} />
+        <label for='complete'>Completed</label>
       </div>
       <div>
-        <input type='radio' id='pending' name='show' />
+        <input type='radio' id='pending' name='show' onClick={() => setFilter('pending')} />
         <label for='pending'>Pending</label>
       </div>
-      {tasks.map(task => (
+      {filteredTodos.map((task) => (
         <TodoItem
           key={task.id}
           task={task}
           deleteTask={deleteTask}
           toggleCompleted={toggleCompleted}
-        />
-      ))}
+        />))}
+
     </div>
   )
 }
