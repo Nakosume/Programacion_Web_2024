@@ -46,6 +46,7 @@ export function TodoList () {
     }))
   }
 
+  // execute
   return (
     <div
       className='todo-list' style={{
@@ -53,40 +54,60 @@ export function TodoList () {
         flexDirection: 'column'
       }}
     >
-      <form
-        onSubmit={handleSubmit}
-        className='add-bar' style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-evenly'
-        }}
-      >
-        <input
-          value={text}
-          onChange={e => setText(e.target.value)}
-        />
-        <button type='submit'>Add</button>
-      </form>
-      <div>
-        <input type='radio' id='all' name='show' checked onClick={() => setFilter('all')} />
-        <label for='all'>All</label>
-      </div>
-      <div>
-        <input type='radio' id='complete' name='show' onClick={() => setFilter('completed')} />
-        <label for='complete'>Completed</label>
-      </div>
-      <div>
-        <input type='radio' id='pending' name='show' onClick={() => setFilter('pending')} />
-        <label for='pending'>Pending</label>
-      </div>
-      {filteredTodos.map((task) => (
+      <SearchBar handleSub={handleSubmit} text={text} set={setText} />
+      <Filter id='all' name='show' filter={filter} click={setFilter} label='All' />
+      <Filter id='completed' name='show' filter={filter} click={setFilter} label='Completed' />
+      <Filter id='pending' name='show' filter={filter} click={setFilter} label='Pending' />
+      <RenderTasks list={filteredTodos} deleteTask={deleteTask} toggleCompleted={toggleCompleted} />
+    </div>
+  )
+}
+
+// componente SearchBar
+function SearchBar (props) {
+  const { handleSub, text, set } = props
+  return (
+    <form
+      onSubmit={handleSub}
+      className='add-bar' style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
+      }}
+    >
+      <input
+        value={text}
+        onChange={e => set(e.target.value)}
+      />
+      <button type='submit'>Add</button>
+    </form>
+  )
+}
+
+// componente RenderTask
+function RenderTasks (props) {
+  const { list, deleteTask, toggleCompleted } = props
+  return (
+    <div>
+      {list.map((task) => (
         <TodoItem
           key={task.id}
           task={task}
           deleteTask={deleteTask}
           toggleCompleted={toggleCompleted}
         />))}
+    </div>
+  )
+}
 
+// componente RenderTask
+function Filter (props) {
+  const { id, name, filter, click, label } = props
+
+  return (
+    <div>
+      <input type='radio' id={id} name={name} checked={filter === id} onClick={() => click(id)} />
+      <label htmlFor={id}>{label}</label>
     </div>
   )
 }
