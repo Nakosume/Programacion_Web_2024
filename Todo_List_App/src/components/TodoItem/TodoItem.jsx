@@ -1,6 +1,4 @@
-import React from 'react'
-
-function TodoItem ({ task, deleteTask, toggleCompleted }) {
+export function TodoItem ({ task, deleteTask, toggleCompleted }) {
   function handleChange () {
     toggleCompleted(task.id)
   }
@@ -31,4 +29,3 @@ function TodoItem ({ task, deleteTask, toggleCompleted }) {
     </div>
   )
 }
-export default TodoItem
