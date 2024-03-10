@@ -49,16 +49,16 @@ export function App () {
   // execute
   return (
     <div
-      className='todo-list' style={{
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column'
-      }}
+      className='todo-list'
     >
-      <SearchBar handleSub={handleSubmit} text={text} set={setText} />
-      <Filter id='all' name='show' filter={filter} click={setFilter} label='All' />
-      <Filter id='completed' name='show' filter={filter} click={setFilter} label='Completed' />
-      <Filter id='pending' name='show' filter={filter} click={setFilter} label='Pending' />
+      <div className='top-bar'>
+        <SearchBar handleSub={handleSubmit} text={text} set={setText} />
+        <div className='filter-container'>
+          <Filter id='all' name='show' filter={filter} click={setFilter} label='All' />
+          <Filter id='completed' name='show' filter={filter} click={setFilter} label='Completed' />
+          <Filter id='pending' name='show' filter={filter} click={setFilter} label='Pending' />
+        </div>
+      </div>
       <RenderTasks list={filteredTodos} deleteTask={deleteTask} toggleCompleted={toggleCompleted} />
     </div>
   )

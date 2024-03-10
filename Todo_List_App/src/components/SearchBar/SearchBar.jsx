@@ -4,11 +4,7 @@ export function SearchBar (props) {
   return (
     <form
       onSubmit={handleSub}
-      className='add-bar' style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-evenly'
-      }}
+      className='search-bar'
     >
       <input
         value={text}

@@ -4,7 +4,9 @@ import { TodoItem } from '../index'
 export function RenderTasks (props) {
   const { list, deleteTask, toggleCompleted } = props
   return (
-    <div>
+    <div
+      className='render-task'
+    >
       {list.map((task) => (
         <TodoItem
           key={task.id}
