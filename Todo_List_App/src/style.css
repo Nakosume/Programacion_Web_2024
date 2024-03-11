@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: #00ffff;
+  background-color: #0b2327;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -41,6 +41,9 @@ body {
 }
 
 .top-bar{
+  color: #00ffff;
+  background-color: #0b2327;
+  border:  double 6px #00ffff;
   padding-top: 2vh;
   padding-bottom: 1vh;
 }
@@ -74,7 +77,9 @@ body {
 }
 
 .todo-item{
-  background-color: green;
+  color: #00ffff;
+  background-color: #0b2327;
+  border: 1px solid #00ffff;
   margin-top: 1vh;
   padding-top: 2%;
   padding-bottom: 2%;
@@ -87,12 +92,13 @@ body {
 
 button {
   border-radius: 8px;
-  border: 1px solid white;
+  border:  double 6px #0b2327;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: hsla(0, 0%, 10%, 0.482);
+  background-color: #00ffff;
+  color: #0b2327;
   cursor: pointer;
   transition: border-color 0.25s;
 }
