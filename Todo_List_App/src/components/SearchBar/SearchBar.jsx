@@ -7,6 +7,8 @@ export function SearchBar (props) {
       className='search-bar'
     >
       <input
+        type='text'
+        placeholder='Enter task'
         value={text}
         onChange={e => set(e.target.value)}
       />

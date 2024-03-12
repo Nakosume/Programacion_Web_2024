@@ -67,6 +67,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .render-task{
@@ -88,6 +89,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 button {
@@ -100,11 +102,60 @@ button {
   background-color: #00ffff;
   color: #0b2327;
   cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+input[type="text"]{
+  font-size: 15px;
+  color: #00ffff;
+  background-color: #0b2327;
+  border:  6px #00ffff;
+  border-bottom: dashed;
+  height:fit-content;
+}
+
+.filter{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+
+}
+
+input[type="radio"]{
+  accent-color: #00ffff;
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+input[type="checkbox"]{
+  accent-color: #00ffff;
+  width: 15px;
+  height: 15px;
+}
+
+::placeholder{
+  color: #008b8b;
+}
+
+button[type="submit"]{
+  color: #00ffff;
+  border:  double 6px #00ffff;
+  background-color: #0b2327;
   transition: border-color 0.25s;
 }
 
+button[type="submit"]:hover{
+  color: #0b2327;
+  background-color: greenyellow;
+  border:  double 6px #0b2327;
+}
+
 button:hover {
-  border-color: #646cff;
+  background-color: red;
 }
 
 button:focus,
