@@ -1,51 +1,8 @@
-import React, { useState } from 'react'
-import { SearchBar, RenderTasks, Filter } from './components'
-import { TASKS } from './const/tasks'
+import { SearchBar, RenderTasks, Filter, TaskCounter } from './components'
+import { useToDo } from './hooks/useToDo'
 
 export function App () {
-  const [tasks, setTasks] = useState(TASKS)
-
-  const [text, setText] = useState('')
-
-  const [filter, setFilter] = useState('all')
-
-  const filteredTodos = tasks.filter((todo) => {
-    if (filter === 'all') return true
-    if (filter === 'completed') return todo.completed
-    if (filter === 'pending') return !todo.completed
-    return true
-  })
-
-  function addTask (text) {
-    const newTask = {
-      id: Date.now(),
-      text,
-      completed: false
-    }
-    setTasks([...tasks, newTask])
-    setText('')
-  }
-
-  const handleSubmit = event => {
-    event.preventDefault()
-
-    addTask(text)
-  }
-
-  function deleteTask (id) {
-    setTasks(tasks.filter(task => task.id !== id))
-  }
-
-  function toggleCompleted (id) {
-    setTasks(tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, completed: !task.completed }
-      } else {
-        return task
-      }
-    }))
-  }
-
+  const {tasks, text,setText,filter,setFilter,filteredTodos,handleSubmit,deleteTask,toggleCompleted}= useToDo()
   // execute
   return (
     <div
@@ -60,6 +17,7 @@ export function App () {
         </div>
       </div>
       <RenderTasks list={filteredTodos} deleteTask={deleteTask} toggleCompleted={toggleCompleted} />
+      <TaskCounter tasks={tasks} />
     </div>
   )
 }
