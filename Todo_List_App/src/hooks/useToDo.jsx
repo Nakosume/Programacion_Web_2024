@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { TASKS } from '../const/tasks'
 
+const initTasks = JSON.parse(window.localStorage.getItem("tasks")) ?? TASKS
+
 export function useToDo() {
-    const [tasks, setTasks] = useState(TASKS)
+    const [tasks, setTasks] = useState(initTasks)
 
     const [text, setText] = useState('')
 
     const [filter, setFilter] = useState('all')
+
+    useEffect(() => {
+        window.localStorage.setItem("tasks", JSON.stringify(tasks))
+    }, [tasks])
 
     const filteredTodos = tasks.filter((todo) => {
         if (filter === 'all') return true
@@ -20,7 +26,7 @@ export function useToDo() {
             return
         }
         const newTask = {
-            id: Date.now(),
+            id: crypto.randomUUID(),
             text,
             completed: false
         }

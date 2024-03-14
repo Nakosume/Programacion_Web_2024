@@ -172,3 +172,7 @@ button:focus-visible {
     max-width: 560px;
   }
   }
+
+@media (max-width: 762px) {
+
+}
