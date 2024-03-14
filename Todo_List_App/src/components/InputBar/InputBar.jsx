@@ -1,5 +1,5 @@
-// componente SearchBar
-export function SearchBar (props) {
+// componente InputBar
+export function InputBar (props) {
   //const [text, setText] = useState('')
 
   const { handleSub, text, set } = props

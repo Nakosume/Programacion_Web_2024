@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react'
-import { TASKS } from '../const/tasks'
 
-const initTasks = JSON.parse(window.localStorage.getItem("tasks")) ?? TASKS
+let initTasks = []
+let lclStrg = JSON.parse(window.localStorage.getItem("tasks"))
+if (lclStrg !== null || lclStrg.length !== 0) {
+    initTasks = lclStrg
+} else {
+    alert("Something went wrong loading the tasks!")
+}
 
 export function useToDo() {
     const [tasks, setTasks] = useState(initTasks)
@@ -36,7 +41,6 @@ export function useToDo() {
 
     const handleSubmit = event => {
         event.preventDefault()
-
         addTask(text)
     }
 

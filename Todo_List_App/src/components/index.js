@@ -1,5 +1,5 @@
 export * from './TodoItem/TodoItem'
-export * from './SearchBar/SearchBar'
+export * from './InputBar/InputBar'
 export * from './RenderTask/RenderTask'
 export * from './Filter/Filter'
 export * from './TaskCounter/TaskCounter'
