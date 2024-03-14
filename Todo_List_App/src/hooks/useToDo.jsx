@@ -44,10 +44,10 @@ export function useToDo() {
         setTasks(tasks.filter(task => task.id !== id))
     }
 
-    function toggleCompleted(id) {
+    function toggleCompleted(id, checked) {
         setTasks(tasks.map(task => {
             if (task.id === id) {
-                return { ...task, completed: !task.completed }
+                return { ...task, completed: checked }
             } else {
                 return task
             }

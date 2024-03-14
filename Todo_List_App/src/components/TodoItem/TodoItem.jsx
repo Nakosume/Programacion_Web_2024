@@ -1,6 +1,6 @@
 export function TodoItem ({ task, deleteTask, toggleCompleted }) {
-  function handleChange () {
-    toggleCompleted(task.id)
+  function handleChange ({target}) {
+    toggleCompleted(task.id, target.checked)
   }
 
   return (

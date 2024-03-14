@@ -1,5 +1,7 @@
 // componente SearchBar
 export function SearchBar (props) {
+  //const [text, setText] = useState('')
+
   const { handleSub, text, set } = props
   return (
     <form
