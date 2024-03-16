@@ -1,62 +1,66 @@
 import { useState, useEffect } from 'react'
 
 let initTasks = []
-let lclStrg = JSON.parse(window.localStorage.getItem("tasks"))
-if (lclStrg !== null || lclStrg.length !== 0) {
-    initTasks = lclStrg
+const lclStrg = JSON.parse(window.localStorage.getItem('tasks'))
+if (lclStrg !== null) {
+  initTasks = lclStrg
 } else {
-    alert("Something went wrong loading the tasks!")
+  alert('Something went wrong loading the tasks!')
 }
 
-export function useToDo() {
-    const [tasks, setTasks] = useState(initTasks)
+export function useToDo () {
+  const [tasks, setTasks] = useState(initTasks)
 
-    const [text, setText] = useState('')
+  const [text, setText] = useState('')
 
-    const [filter, setFilter] = useState('all')
+  const [filter, setFilter] = useState('all')
 
-    useEffect(() => {
-        window.localStorage.setItem("tasks", JSON.stringify(tasks))
-    }, [tasks])
+  useEffect(() => {
+    window.localStorage.setItem('tasks', JSON.stringify(tasks))
+  }, [tasks])
 
-    const filteredTodos = tasks.filter((todo) => {
-        if (filter === 'all') return true
-        if (filter === 'completed') return todo.completed
-        if (filter === 'pending') return !todo.completed
-        return true
-    })
+  const filteredTodos = tasks.filter((todo) => {
+    if (filter === 'all') return true
+    if (filter === 'completed') return todo.completed
+    if (filter === 'pending') return !todo.completed
+    return true
+  })
 
-    function addTask(text) {
-        if (text === '') {
-            return
-        }
-        const newTask = {
-            id: crypto.randomUUID(),
-            text,
-            completed: false
-        }
-        setTasks([...tasks, newTask])
-        setText('')
+  function addTask (text) {
+    if (text === '') {
+      return alert('Please, give a name to your task before trying to add it')
     }
-
-    const handleSubmit = event => {
-        event.preventDefault()
-        addTask(text)
+    const newTask = {
+      id: crypto.randomUUID(),
+      text,
+      completed: false
     }
+    setTasks([...tasks, newTask])
+    setText('')
+  }
 
-    function deleteTask(id) {
-        setTasks(tasks.filter(task => task.id !== id))
-    }
+  const handleSubmit = event => {
+    event.preventDefault()
+    addTask(text)
+  }
 
-    function toggleCompleted(id, checked) {
-        setTasks(tasks.map(task => {
-            if (task.id === id) {
-                return { ...task, completed: checked }
-            } else {
-                return task
-            }
-        }))
-    }
+  function deleteTask (id) {
+    setTasks(tasks.filter(task => task.id !== id))
+  }
 
-    return { tasks, text, setText, filter, setFilter, filteredTodos, handleSubmit, deleteTask, toggleCompleted }
+  function deleteCompletedTask () {
+    setTasks(tasks.filter(task => task.completed !== true))
+  }
+
+  function toggleCompleted (id, checked) {
+    setTasks(tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, completed: checked }
+      } else {
+        return task
+      }
+    }))
+  }
+
+  return { tasks, text, setText, filter, setFilter, filteredTodos, handleSubmit, deleteTask, toggleCompleted, deleteCompletedTask }
 }

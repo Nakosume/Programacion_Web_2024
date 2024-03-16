@@ -1,12 +1,12 @@
 // componente InputBar
 export function InputBar (props) {
-  //const [text, setText] = useState('')
+  // const [text, setText] = useState('')
 
   const { handleSub, text, set } = props
   return (
     <form
       onSubmit={handleSub}
-      className='search-bar'
+      className='input-bar'
     >
       <input
         type='text'
