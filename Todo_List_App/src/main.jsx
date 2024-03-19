@@ -1,10 +1,13 @@
+import React from 'react'
 import './style.css'
-import { createRoot } from 'react-dom/client'
+import ReactDOM from 'react-dom/client'
 import App from './App'
+import { TaskContextProvider } from './context/TaskContextProvider'
 
-const appContainer = document.querySelector('#app')
-const root = createRoot(appContainer)
-
-root.render(<App />)
-
-console.log(appContainer)
+ReactDOM.createRoot(document.getElementById('app')).render(
+  <React.StrictMode>
+    <TaskContextProvider>
+      <App />
+    </TaskContextProvider>
+  </React.StrictMode>
+)

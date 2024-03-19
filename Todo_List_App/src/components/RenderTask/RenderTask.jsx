@@ -1,13 +1,14 @@
 // componente RenderTask
 import { TodoItem } from '../index'
+import { useToDo } from '../../hooks/useToDo'
 
-export function RenderTasks (props) {
-  const { list, deleteTask, toggleCompleted } = props
+export function RenderTasks () {
+  const { filteredTodos, deleteTask, toggleCompleted } = useToDo()
   return (
     <div
       className='render-task'
     >
-      {list.map((task) => (
+      {filteredTodos.map((task) => (
         <TodoItem
           key={task.id}
           task={task}

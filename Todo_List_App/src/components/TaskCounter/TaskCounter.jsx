@@ -1,4 +1,8 @@
-export function TaskCounter ({ tasks, deleteCompletedTask }) {
+import { useToDo } from '../../hooks/useToDo'
+
+export function TaskCounter () {
+  const { tasks, deleteCompletedTask } = useToDo()
+
   const allTasks = tasks.length
   let compTasks = 0
   tasks.forEach((e) => {

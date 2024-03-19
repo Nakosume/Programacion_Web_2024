@@ -1,18 +1,20 @@
 // componente InputBar
-export function InputBar (props) {
+import { useToDo } from '../../hooks/useToDo'
+
+export function InputBar () {
   // const [text, setText] = useState('')
 
-  const { handleSub, text, set } = props
+  const { handleSubmit, text, setText } = useToDo()
   return (
     <form
-      onSubmit={handleSub}
+      onSubmit={handleSubmit}
       className='input-bar'
     >
       <input
         type='text'
         placeholder='Enter task'
         value={text}
-        onChange={e => set(e.target.value)}
+        onChange={e => setText(e.target.value)}
       />
       <button type='submit'>Add</button>
     </form>

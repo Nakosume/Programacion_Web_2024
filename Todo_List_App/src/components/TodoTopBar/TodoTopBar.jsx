@@ -1,8 +1,9 @@
 // componente TodoTopBar
 import { Filter, InputBar } from '../index'
+import { useToDo } from '../../hooks/useToDo'
 
-export function TodoTopBar (props) {
-  const { handleSubmit, text, setText, filter, setFilter } = props
+export function TodoTopBar () {
+  const { handleSubmit, text, setText, filter, setFilter } = useToDo()
   return (
     <div className='top-bar'>
       <InputBar handleSub={handleSubmit} text={text} set={setText} />
