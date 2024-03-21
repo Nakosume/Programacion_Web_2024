@@ -5,6 +5,8 @@ let initTasks = []
 const lclStrg = JSON.parse(window.localStorage.getItem('tasks'))
 if (lclStrg !== null) {
   initTasks = lclStrg
+} else if (lclStrg === null) {
+  initTasks = []
 } else {
   alert('Something went wrong loading the tasks!')
 }
