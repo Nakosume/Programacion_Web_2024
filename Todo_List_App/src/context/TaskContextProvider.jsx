@@ -1,5 +1,14 @@
-import { useState, useEffect } from 'react'
+/*
+TODO: Change from funcitons to arrow functions
+*/
+
+import { useReducer, useState, useEffect } from 'react'
 import { TaskContext } from './TaskContext'
+import { TASK_ACTIONS } from '../const/tasksActions';
+import {reducerTask} from '../reducers/TaskReducer'
+
+//Reducer & functions
+
 
 let initTasks = []
 const lclStrg = JSON.parse(window.localStorage.getItem('tasks'))
@@ -11,8 +20,9 @@ if (lclStrg !== null) {
   alert('Something went wrong loading the tasks!')
 }
 
-export function TaskContextProvider ({ children }) {
-  const [tasks, setTasks] = useState(initTasks)
+export function TaskContextProvider({ children }) {
+
+  const [tasks, dispatchTask] = useReducer(reducerTask, initTasks)
 
   const [text, setText] = useState('')
 
@@ -29,17 +39,12 @@ export function TaskContextProvider ({ children }) {
     return true
   })
 
-  function addTask (text) {
-    if (text === '') {
-      return alert('Please, give a name to your task before trying to add it')
+  const addTask = (text) => {
+    const action = {
+      type: TASK_ACTIONS.CREATE_TASK,
+      payload: text
     }
-    const newTask = {
-      id: crypto.randomUUID(),
-      text,
-      completed: false
-    }
-    setTasks([...tasks, newTask])
-    setText('')
+    dispatchTask(action)
   }
 
   const handleSubmit = event => {
@@ -47,15 +52,15 @@ export function TaskContextProvider ({ children }) {
     addTask(text)
   }
 
-  function deleteTask (id) {
+  function deleteTask(id) {
     setTasks(tasks.filter(task => task.id !== id))
   }
 
-  function deleteCompletedTask () {
+  function deleteCompletedTask() {
     setTasks(tasks.filter(task => task.completed !== true))
   }
 
-  function toggleCompleted (id, checked) {
+  function toggleCompleted(id, checked) {
     setTasks(tasks.map(task => {
       if (task.id === id) {
         return { ...task, completed: checked }
