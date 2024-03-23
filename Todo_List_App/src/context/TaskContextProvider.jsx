@@ -4,11 +4,10 @@ TODO: Change from funcitons to arrow functions
 
 import { useReducer, useState, useEffect } from 'react'
 import { TaskContext } from './TaskContext'
-import { TASK_ACTIONS } from '../const/tasksActions';
-import {reducerTask} from '../reducers/TaskReducer'
+import { TASK_ACTIONS } from '../const/tasksActions'
+import { reducerTask } from '../reducers/TaskReducer'
 
-//Reducer & functions
-
+// Reducer & functions
 
 let initTasks = []
 const lclStrg = JSON.parse(window.localStorage.getItem('tasks'))
@@ -17,11 +16,11 @@ if (lclStrg !== null) {
 } else if (lclStrg === null) {
   initTasks = []
 } else {
+  // eslint-disable-next-line no-undef
   alert('Something went wrong loading the tasks!')
 }
 
-export function TaskContextProvider({ children }) {
-
+export const TaskContextProvider = ({ children }) => {
   const [tasks, dispatchTask] = useReducer(reducerTask, initTasks)
 
   const [text, setText] = useState('')
@@ -47,28 +46,42 @@ export function TaskContextProvider({ children }) {
     dispatchTask(action)
   }
 
+  const deleteTask = (id) => {
+    const action = {
+      type: TASK_ACTIONS.DELETE_TASK,
+      payload: id
+    }
+    dispatchTask(action)
+  }
+
+  const toggleCompleted = (id, checked) => {
+    const action = {
+      type: TASK_ACTIONS.TOGGLE_TASK,
+      payload: {
+        id,
+        checked
+      }
+    }
+    dispatchTask(action)
+  }
+
+  const deleteCompletedTask = () => {
+    const action = {
+      type: TASK_ACTIONS.COMPLETE_TASK,
+      payload: null
+    }
+    dispatchTask(action)
+  }
+
   const handleSubmit = event => {
     event.preventDefault()
     addTask(text)
+    setText('')
   }
 
-  function deleteTask(id) {
-    setTasks(tasks.filter(task => task.id !== id))
-  }
-
-  function deleteCompletedTask() {
+  /* function deleteCompletedTask () {
     setTasks(tasks.filter(task => task.completed !== true))
-  }
-
-  function toggleCompleted(id, checked) {
-    setTasks(tasks.map(task => {
-      if (task.id === id) {
-        return { ...task, completed: checked }
-      } else {
-        return task
-      }
-    }))
-  }
+  } */
 
   return (
     <TaskContext.Provider value={{
