@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 export function App () {
   const [fact, setFact] = useState('')
-  const [catImg, setCatImg] = useState('')
+  // const [catImg, setCatImg] = useState('')
 
   useEffect(() => {
     fetch('https://catfact.ninja/fact')
@@ -13,7 +13,7 @@ export function App () {
       .then(data => {
         setFact(data.fact)
       })
-      .then(setCatImg('https://cataas.com/cat/says/' + fact.split(' ').slice(0, 3).join(' ')))
+      // .then(setCatImg('https://cataas.com/cat/says/' + fact.split(' ').slice(0, 3).join(' ')))
       .catch(err => console.log(err))
   }, [])
 
