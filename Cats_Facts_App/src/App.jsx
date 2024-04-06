@@ -5,33 +5,52 @@ import { useEffect, useState } from 'react'
 
 export function App () {
   const [fact, setFact] = useState('')
-  // const [catImg, setCatImg] = useState('')
 
+  // For context, reducers & acctions
   useEffect(() => {
     fetch('https://catfact.ninja/fact')
       .then(res => res.json())
       .then(data => {
         setFact(data.fact)
       })
-      // .then(setCatImg('https://cataas.com/cat/says/' + fact.split(' ').slice(0, 3).join(' ')))
       .catch(err => console.log(err))
   }, [])
 
-  // {fact.split(' ').slice(0, 3).join(' ')}
+  const newFact = () => {
+    fetch('https://catfact.ninja/fact')
+      .then(res => res.json())
+      .then(data => {
+        setFact(data.fact)
+      })
+      .catch(err => console.log(err))
+  }
 
-  function RenderImg () {
-    const src = 'https://cataas.com/cat/says/' + fact.split(' ').slice(0, 3).join(' ')
+  // For components
+  function RenderImg (props) {
+    const { fact } = props
     return (
-      <img src={src} />
+      <div className='cat-cont'>
+        <img className='cat-img' src={'https://cataas.com/cat/says/' + fact.split(' ').slice(0, 4).join(' ')} />
+      </div>
+    )
+  }
+
+  function ChangeButton (props) {
+    const { text, onClick } = props
+    return (
+      <div>
+        <button onClick={() => onClick()}>{text}</button>
+      </div>
     )
   }
 
   // execute
   return (
-    <div className='todo-list'>
+    <div className='cat-facts'>
       <h1>Cat Facts</h1>
-      <RenderImg />
-      <p>{fact}</p>
+      <RenderImg fact={fact} />
+      <p className='the-fact'>{fact}</p>
+      <ChangeButton text='Show Mewr Facts :3' onClick={newFact} />
     </div>
   )
 }
