@@ -5,32 +5,40 @@ import { useEffect, useState } from 'react'
 
 export function App () {
   const [fact, setFact] = useState('')
+  const [catImageUrl, setCatImageUrl] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  // For context, reducers & acctions
   useEffect(() => {
-    fetch('https://catfact.ninja/fact')
-      .then(res => res.json())
-      .then(data => {
-        setFact(data.fact)
-      })
-      .catch(err => console.log(err))
+    setLoading(true)
+    fetchCatFact()
+      .finally(() => setLoading(false))
   }, [])
 
-  const newFact = () => {
-    fetch('https://catfact.ninja/fact')
-      .then(res => res.json())
-      .then(data => {
-        setFact(data.fact)
-      })
-      .catch(err => console.log(err))
+  const fetchCatFact = async () => {
+    try {
+      const response = await fetch('https://catfact.ninja/fact')
+      const data = await response.json()
+      setFact(data.fact)
+
+      const catImageUrl = `https://cataas.com/cat/says/${data.fact.split(' ').slice(0, 4).join(' ')}`
+      setCatImageUrl(catImageUrl)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const newFact = async () => {
+    setLoading(true)
+    await fetchCatFact()
+      .finally(() => setLoading(false))
   }
 
   // For components
   function RenderImg (props) {
-    const { fact } = props
+    const { imageUrl } = props
     return (
       <div className='cat-cont'>
-        <img className='cat-img' src={'https://cataas.com/cat/says/' + fact.split(' ').slice(0, 4).join(' ')} />
+        <img className='cat-img' src={imageUrl} alt='Cat' />
       </div>
     )
   }
@@ -48,9 +56,17 @@ export function App () {
   return (
     <div className='cat-facts'>
       <h1>Cat Facts</h1>
-      <RenderImg fact={fact} />
-      <p className='the-fact'>{fact}</p>
-      <ChangeButton text='Show Mewr Facts :3' onClick={newFact} />
+      {loading
+        ? (
+          <div>Loading...</div>
+          )
+        : (
+          <div className='card'>
+            <RenderImg imageUrl={catImageUrl} />
+            <p className='the-fact'>{fact}</p>
+          </div>
+          )}
+      <ChangeButton text='Show More Facts :3' onClick={newFact} />
     </div>
   )
 }
