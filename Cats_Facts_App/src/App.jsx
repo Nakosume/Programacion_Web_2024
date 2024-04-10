@@ -11,7 +11,11 @@ export function App () {
   useEffect(() => {
     setLoading(true)
     fetchCatFact()
-      .finally(() => setLoading(false))
+    const timeout = setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+
+    return () => clearTimeout(timeout)
   }, [])
 
   const fetchCatFact = async () => {
@@ -29,8 +33,12 @@ export function App () {
 
   const newFact = async () => {
     setLoading(true)
-    await fetchCatFact()
-      .finally(() => setLoading(false))
+    fetchCatFact()
+    const timeout = setTimeout(() => {
+      setLoading(false)
+    }, 1500)
+
+    return () => clearTimeout(timeout)
   }
 
   // For components
