@@ -12,17 +12,30 @@ export function App () {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    /*
     setLoading(true)
     fetchCatFact()
-    setLoading(false)
+    const timeout = setTimeout(() => {
+      setLoading(false)
+    }, 1500)
+
+    return () => clearTimeout(timeout)
+     */
+    setLoading(true)
+    fetch('https://catfact.ninja/fact')
+      .then(res => res.json())
+      .then(data => {
+        setFact(data.fact)
+        const catImageUrl = IMG_CATS + data.fact.split(' ').slice(0, 4).join(' ')
+        setCatImageUrl(catImageUrl)
+      })
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
   }, [])
 
   // actions and others
-  const fetchCatFact = async () => {
+  /* const fetchCatFact = async () => {
     try {
-      /* const response = await fetch('https://catfact.ninja/fact')
-      const data = await response.json()
-      setFact(data.fact) */
       fetch('https://catfact.ninja/fact')
         .then(res => res.json())
         .then(data => {
@@ -34,9 +47,10 @@ export function App () {
     } catch (error) {
       console.log(error)
     }
-  }
+  } */
 
   const newFact = async () => {
+    /*
     setLoading(true)
     fetchCatFact()
     const timeout = setTimeout(() => {
@@ -44,6 +58,17 @@ export function App () {
     }, 1500)
 
     return () => clearTimeout(timeout)
+     */
+    setLoading(true)
+    fetch('https://catfact.ninja/fact')
+      .then(res => res.json())
+      .then(data => {
+        setFact(data.fact)
+        const catImageUrl = IMG_CATS + data.fact.split(' ').slice(0, 4).join(' ')
+        setCatImageUrl(catImageUrl)
+      })
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
   }
 
   // execute
