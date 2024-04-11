@@ -2,6 +2,9 @@
 // import { useToDo } from './hooks/useToDo'
 
 import { useEffect, useState } from 'react'
+import { Button, RenderImg, ShowFact } from './components'
+
+const IMG_CATS = 'https://cataas.com/cat/says/'
 
 export function App () {
   const [fact, setFact] = useState('')
@@ -18,13 +21,14 @@ export function App () {
     return () => clearTimeout(timeout)
   }, [])
 
+  // actions and others
   const fetchCatFact = async () => {
     try {
       const response = await fetch('https://catfact.ninja/fact')
       const data = await response.json()
       setFact(data.fact)
 
-      const catImageUrl = `https://cataas.com/cat/says/${data.fact.split(' ').slice(0, 4).join(' ')}`
+      const catImageUrl = IMG_CATS + data.fact.split(' ').slice(0, 4).join(' ')
       setCatImageUrl(catImageUrl)
     } catch (error) {
       console.log(error)
@@ -41,25 +45,6 @@ export function App () {
     return () => clearTimeout(timeout)
   }
 
-  // For components
-  function RenderImg (props) {
-    const { imageUrl } = props
-    return (
-      <div className='cat-cont'>
-        <img className='cat-img' src={imageUrl} alt='Cat' />
-      </div>
-    )
-  }
-
-  function ChangeButton (props) {
-    const { text, onClick } = props
-    return (
-      <div>
-        <button onClick={() => onClick()}>{text}</button>
-      </div>
-    )
-  }
-
   // execute
   return (
     <div className='cat-facts'>
@@ -71,10 +56,10 @@ export function App () {
         : (
           <div className='card'>
             <RenderImg imageUrl={catImageUrl} />
-            <p className='the-fact'>{fact}</p>
+            <ShowFact fact={fact} />
           </div>
           )}
-      <ChangeButton text='Show More Facts :3' onClick={newFact} />
+      <Button text='Show More Facts :3' onClick={newFact} />
     </div>
   )
 }
