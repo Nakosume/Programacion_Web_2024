@@ -20,7 +20,6 @@
   --color1: #31122f;
   --color2: #ffa500;
   --colorLow: #412a00;
-
 }
 
 body {
@@ -35,7 +34,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 }
 
 .cat-facts {
@@ -46,13 +45,12 @@ body {
   align-items: center;
   justify-content: space-between;
   padding-bottom: 4vh;
- 
 }
-.card{
+.card {
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items: center;
 }
 
 .cat-cont {
@@ -60,7 +58,7 @@ body {
   max-width: 100%;
   margin-left: 2vh;
   margin-right: 2vh;
-  border:  double 6px var(--color2);
+  border: double 6px var(--color2);
 }
 
 .cat-img {
@@ -68,7 +66,7 @@ body {
   max-height: 45vh;
 }
 
-.the-fact{
+.the-fact {
   max-width: 100%;
   margin-left: 2vh;
   margin-right: 2vh;
@@ -76,7 +74,7 @@ body {
 
 button {
   border-radius: 8px;
-  border:  double 6px var(--color1);
+  border: double 6px var(--color1);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -92,12 +90,30 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media(min-width: 375px){
-  :root{
+@media (min-width: 375px) {
+  :root {
     font-size: var(--font-size);
   }
 
-  #app{
+  #app {
     max-width: 560px;
   }
+}
+
+@media (max-width: 637px) {
+  h1{
+    font-size: 2.5em;
   }
+  button {
+    padding: 1em 2em;
+    font-size: 1.2em;
+    margin-bottom: 4em;
+  }
+  .cat-cont{
+    max-width: 75%;
+  }
+  .the-fact{
+    max-width: 70%;
+    font-size: 1.1em;
+  }
+}
