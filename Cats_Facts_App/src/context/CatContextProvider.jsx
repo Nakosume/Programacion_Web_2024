@@ -3,9 +3,9 @@ TODO: Change from funcitons to arrow functions
 */
 
 import { useReducer, useState, useEffect } from 'react'
-import { TaskContext } from './TaskContext'
-import { TASK_ACTIONS } from '../const/tasksActions'
-import { reducerTask } from '../reducers/TaskReducer'
+import { CatContext } from './CatContext'
+import { CAT_ACTIONS } from '../const/CatActions'
+import { reducerCat } from '../reducers/CatReducer'
 
 // Reducer & functions
 
@@ -20,8 +20,8 @@ if (lclStrg !== null) {
   alert('Something went wrong loading the tasks!')
 }
 
-export const TaskContextProvider = ({ children }) => {
-  const [tasks, dispatchTask] = useReducer(reducerTask, initTasks)
+export const CatContextProvider = ({ children }) => {
+  const [tasks, dispatchTask] = useReducer(reducerCat, initTasks)
 
   const [text, setText] = useState('')
 
@@ -40,7 +40,7 @@ export const TaskContextProvider = ({ children }) => {
 
   const addTask = (text) => {
     const action = {
-      type: TASK_ACTIONS.CREATE_TASK,
+      type: CAT_ACTIONS.CREATE_CAT,
       payload: text
     }
     dispatchTask(action)
@@ -48,7 +48,7 @@ export const TaskContextProvider = ({ children }) => {
 
   const deleteTask = (id) => {
     const action = {
-      type: TASK_ACTIONS.DELETE_TASK,
+      type: CAT_ACTIONS.DELETE_CAT,
       payload: id
     }
     dispatchTask(action)
@@ -56,7 +56,7 @@ export const TaskContextProvider = ({ children }) => {
 
   const toggleCompleted = (id, checked) => {
     const action = {
-      type: TASK_ACTIONS.TOGGLE_TASK,
+      type: CAT_ACTIONS.TOGGLE_CAT,
       payload: {
         id,
         checked
@@ -67,7 +67,7 @@ export const TaskContextProvider = ({ children }) => {
 
   const deleteCompletedTask = () => {
     const action = {
-      type: TASK_ACTIONS.COMPLETE_TASK,
+      type: CAT_ACTIONS.COMPLETE_CAT,
       payload: null
     }
     dispatchTask(action)
@@ -84,7 +84,7 @@ export const TaskContextProvider = ({ children }) => {
   } */
 
   return (
-    <TaskContext.Provider value={{
+    <CatContext.Provider value={{
       tasks,
       text,
       setText,
@@ -98,6 +98,6 @@ export const TaskContextProvider = ({ children }) => {
     }}
     >
       {children}
-    </TaskContext.Provider>
+    </CatContext.Provider>
   )
 }

@@ -1,8 +1,8 @@
-import { TASK_ACTIONS } from '../const/tasksActions'
+import { CAT_ACTIONS } from '../const/CatActions'
 
-export const reducerTask = (tasks, action) => {
+export const reducerCat = (tasks, action) => {
   switch (action.type) {
-    case TASK_ACTIONS.CREATE_TASK:{
+    case CAT_ACTIONS.CREATE_CAT:{
       if (action.payload === '') {
         // eslint-disable-next-line no-undef
         return alert('Please, give a name to your task before trying to add it')
@@ -14,11 +14,11 @@ export const reducerTask = (tasks, action) => {
       }
       return [...tasks, newTask] }
 
-    case TASK_ACTIONS.DELETE_TASK:{
+    case CAT_ACTIONS.DELETE_CAT:{
       return tasks.filter((e) => e.id !== action.payload)
     }
 
-    case TASK_ACTIONS.TOGGLE_TASK:{
+    case CAT_ACTIONS.TOGGLE_CAT:{
       return tasks.map(task => {
         if (task.id === action.payload.id) {
           return { ...task, completed: action.payload.checked }
@@ -28,7 +28,7 @@ export const reducerTask = (tasks, action) => {
       })
     }
 
-    case TASK_ACTIONS.COMPLETE_TASK:{
+    case CAT_ACTIONS.COMPLETE_CAT:{
       return tasks.filter(task => task.completed !== true)
     }
     default:
