@@ -1,8 +1,11 @@
+import { useCat } from '../hooks/useCat'
+
 export function Button (props) {
-  const { text, onClick } = props
+  const { text } = props
+  const { newFact } = useCat()
   return (
     <div>
-      <button onClick={() => onClick()}>{text}</button>
+      <button onClick={newFact}>{text}</button>
     </div>
   )
 }

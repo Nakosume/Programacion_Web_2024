@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { useCat } from '../hooks/useCat'
 
-export function RenderImg (props) {
+export function RenderImg () {
   const [showImg, setShowImg] = useState(false)
-  const { imageUrl } = props
+  const { catImageUrl } = useCat()
 
   const handleOnLoad = () => {
     setShowImg(true)
@@ -12,7 +13,7 @@ export function RenderImg (props) {
     <div className={showImg ? 'cat-cont' : 'no-cat'}>
       <img
         className='cat-img'
-        src={imageUrl}
+        src={catImageUrl}
         alt='Cat'
         onLoad={handleOnLoad}
       />

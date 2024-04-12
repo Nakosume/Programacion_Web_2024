@@ -9,92 +9,54 @@ import { reducerCat } from '../reducers/CatReducer'
 
 // Reducer & functions
 
-let initTasks = []
-const lclStrg = JSON.parse(window.localStorage.getItem('tasks'))
-if (lclStrg !== null) {
-  initTasks = lclStrg
-} else if (lclStrg === null) {
-  initTasks = []
-} else {
-  // eslint-disable-next-line no-undef
-  alert('Something went wrong loading the tasks!')
-}
+const IMG_CATS = 'https://cataas.com/cat/says/'
 
 export const CatContextProvider = ({ children }) => {
-  const [tasks, dispatchTask] = useReducer(reducerCat, initTasks)
-
-  const [text, setText] = useState('')
-
-  const [filter, setFilter] = useState('all')
+  const [fact, dispatchFact] = useReducer(reducerCat, '')
+  // const [fact, setFact] = useState('')
+  const [catImageUrl, setCatImageUrl] = useState('')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    window.localStorage.setItem('tasks', JSON.stringify(tasks))
-  }, [tasks])
+    setLoading(true)
+    fetch('https://catfact.ninja/fact')
+      .then(res => res.json())
+      .then(data => {
+        dispatchFact({ type: CAT_ACTIONS.SET_CAT, payload: data.fact })
+        const catImageUrl = IMG_CATS + data.fact.split(' ').slice(0, 4).join(' ')
+        setCatImageUrl(catImageUrl)
+      })
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
+  }, [])
 
-  const filteredTodos = tasks.filter((todo) => {
-    if (filter === 'all') return true
-    if (filter === 'completed') return todo.completed
-    if (filter === 'pending') return !todo.completed
-    return true
-  })
+  const newFact = () => {
+    setLoading(true)
+    fetch('https://catfact.ninja/fact')
+      .then(res => res.json())
+      .then(data => {
+        dispatchFact({ type: CAT_ACTIONS.SET_CAT, payload: data.fact })
+        const catImageUrl = IMG_CATS + data.fact.split(' ').slice(0, 4).join(' ')
+        setCatImageUrl(catImageUrl)
+      })
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false))
+  }
 
-  const addTask = (text) => {
+  /* const addTask = (text) => {
     const action = {
       type: CAT_ACTIONS.CREATE_CAT,
       payload: text
     }
     dispatchTask(action)
-  }
-
-  const deleteTask = (id) => {
-    const action = {
-      type: CAT_ACTIONS.DELETE_CAT,
-      payload: id
-    }
-    dispatchTask(action)
-  }
-
-  const toggleCompleted = (id, checked) => {
-    const action = {
-      type: CAT_ACTIONS.TOGGLE_CAT,
-      payload: {
-        id,
-        checked
-      }
-    }
-    dispatchTask(action)
-  }
-
-  const deleteCompletedTask = () => {
-    const action = {
-      type: CAT_ACTIONS.COMPLETE_CAT,
-      payload: null
-    }
-    dispatchTask(action)
-  }
-
-  const handleSubmit = event => {
-    event.preventDefault()
-    addTask(text)
-    setText('')
-  }
-
-  /* function deleteCompletedTask () {
-    setTasks(tasks.filter(task => task.completed !== true))
   } */
 
   return (
     <CatContext.Provider value={{
-      tasks,
-      text,
-      setText,
-      filter,
-      setFilter,
-      filteredTodos,
-      handleSubmit,
-      deleteTask,
-      toggleCompleted,
-      deleteCompletedTask
+      fact,
+      catImageUrl,
+      loading,
+      newFact
     }}
     >
       {children}
