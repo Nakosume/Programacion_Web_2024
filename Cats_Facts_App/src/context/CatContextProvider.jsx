@@ -1,7 +1,3 @@
-/*
-TODO: Change from funcitons to arrow functions
-*/
-
 import { useReducer, useState, useEffect } from 'react'
 import { CatContext } from './CatContext'
 import { CAT_ACTIONS } from '../const/CatActions'
@@ -13,7 +9,6 @@ const IMG_CATS = 'https://cataas.com/cat/says/'
 
 export const CatContextProvider = ({ children }) => {
   const [fact, dispatchFact] = useReducer(reducerCat, '')
-  // const [fact, setFact] = useState('')
   const [catImageUrl, setCatImageUrl] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -42,14 +37,6 @@ export const CatContextProvider = ({ children }) => {
       .catch(err => console.log(err))
       .finally(() => setLoading(false))
   }
-
-  /* const addTask = (text) => {
-    const action = {
-      type: CAT_ACTIONS.CREATE_CAT,
-      payload: text
-    }
-    dispatchTask(action)
-  } */
 
   return (
     <CatContext.Provider value={{
