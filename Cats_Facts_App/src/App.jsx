@@ -11,7 +11,7 @@ export function App () {
       <h1>Cat Facts</h1>
       {loading
         ? (
-          <div>Loading...</div>
+          <div className='loader'>Loading...</div>
           )
         : (
           <div className='card'>
