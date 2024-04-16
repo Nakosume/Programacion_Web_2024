@@ -128,7 +128,7 @@ body {
   margin-right: 2vh;
   border:  double 6px var(--color2);
   opacity: 1;
-  animation: summon 1s;
+  animation: summon 1s linear;
 }
 
 @keyframes summon{
