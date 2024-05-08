@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { CatContext } from '../context/CatContext'
+import { GifContext } from '../context/GifContext'
 
-export function useCat () {
-  const context = useContext(CatContext)
+export function useGif () {
+  const context = useContext(GifContext)
 
   if (!context) {
     throw new Error('This Component should be within TaskContextProvider')

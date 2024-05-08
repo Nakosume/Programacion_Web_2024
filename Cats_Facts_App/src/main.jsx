@@ -2,12 +2,12 @@ import React from 'react'
 import './style.css'
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { CatContextProvider } from './context/CatContextProvider'
+import { GifContextProvider } from './context/GifContextProvider'
 
 ReactDOM.createRoot(document.getElementById('app')).render(
   <React.StrictMode>
-    <CatContextProvider>
+    <GifContextProvider>
       <App />
-    </CatContextProvider>
+    </GifContextProvider>
   </React.StrictMode>
 )
