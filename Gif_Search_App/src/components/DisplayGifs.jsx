@@ -1,9 +1,8 @@
 import { useGif } from '../hooks/useGif'
 import ImageItem from './ImageItem'
 
-const DisplayGifs = ({ category }) => {
-  const url = ` https://api.giphy.com/v1/gifs/search?api_key=lJdgnNYTZ0o1O3hPfyTBXZh8aKUBwQPu&q=${category}&limit=10`
-  const { loading, data } = useGif(url)
+const DisplayGifs = () => {
+  const { loading, data } = useGif()
 
   return (
     <div className='container-gifs'>

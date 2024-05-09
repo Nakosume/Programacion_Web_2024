@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react'
 import { GifContext } from './GifContext'
 
-const apiKey = 'RtKKP5KXHprTMZbzf7WZTABA187e2JxP'
-const baseUrl = 'api.giphy.com/v1/gifs'
+const key = 'Pa7OKX0j4Wf0lfKDrH40M76Cm9wrYrXQ'
 
 export const GifContextProvider = ({ children }) => {
   const [data, setData] = useState(null)
@@ -11,24 +10,29 @@ export const GifContextProvider = ({ children }) => {
   const [search, setSearch] = useState('')
 
   const fetchApi = () => {
-    fetch(`${baseUrl}/search?api_key=${apiKey} (something goes here)`)
-      .then(respuesta => respuesta.json())
-      .then(respuestaJson => {
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${search}`)
+      .then(res => res.json())
+      .then(data => {
         setLoading(true)
-        setData(respuestaJson.data)
+        setData(data.data)
         // console.log(respuestaJson);
       })
+      .then(console.log(data))
       .catch(error => console.log(error))
   }
 
   useEffect(() => {
-    fetchApi()
+    setTimeout(() => {
+      fetchApi()
+    }, 2000)
   }, [search])
 
   return (
     <GifContext.Provider value={{
       data,
-      loading
+      loading,
+      setSearch,
+      search
     }}
     >
       {children}
