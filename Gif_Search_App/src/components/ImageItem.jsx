@@ -7,7 +7,7 @@ export const ImageItem = ({ title, url }) => {
     setShow(true)
   }
   return (
-    <div>
+    <div className='gif-card'>
       <img src={url} alt={title} onLoad={handleOnLoad} />
       <div className={show ? 'no-img' : 'loader-img'} />
       <p>{title}</p>
