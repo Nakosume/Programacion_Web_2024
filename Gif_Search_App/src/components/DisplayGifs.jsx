@@ -1,9 +1,9 @@
 import { useGif } from '../hooks/useGif'
-import ImageItem from './ImageItem'
+import { ImageItem } from './ImageItem'
 
 // data.lenght > 0
 
-const DisplayGifs = () => {
+export const DisplayGifs = () => {
   const { data, loading } = useGif()
 
   return (
@@ -21,5 +21,3 @@ const DisplayGifs = () => {
 
   )
 }
-
-export default DisplayGifs

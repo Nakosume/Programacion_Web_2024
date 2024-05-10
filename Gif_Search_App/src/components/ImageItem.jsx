@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const ImageItem = ({ title, url }) => {
+export const ImageItem = ({ title, url }) => {
   const [show, setShow] = useState(false)
 
   const handleOnLoad = () => {
@@ -14,5 +14,3 @@ const ImageItem = ({ title, url }) => {
     </div>
   )
 }
-
-export default ImageItem

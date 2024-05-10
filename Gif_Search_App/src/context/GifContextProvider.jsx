@@ -34,7 +34,8 @@ export const GifContextProvider = ({ children }) => {
       data,
       loading,
       setSearch,
-      search
+      search,
+      debounceIt
     }}
     >
       {children}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import AddCategory from './components/AddCategory'
-import DisplayGifs from './components/DisplayGifs'
+import { AddCategory } from './components/AddCategory'
+import { DisplayGifs } from './components/DisplayGifs'
 
 function App () {
   const [category, setCategory] = useState('')

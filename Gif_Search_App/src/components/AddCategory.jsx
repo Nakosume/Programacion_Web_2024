@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useGif } from '../hooks/useGif'
 
-const AddCategory = ({ setCategory }) => {
-  const { search, setSearch } = useGif()
+export const AddCategory = ({ setCategory }) => {
+  const { search, setSearch, debounceIt } = useGif()
   const [error, setError] = useState(false)
 
   const searchGif = e => {
@@ -13,16 +13,8 @@ const AddCategory = ({ setCategory }) => {
     }
     setError(false)
     setCategory(search)
-    setSearch('')
+    debounceIt(search)
   }
-
-  /* const debounceHandler = (e) => {
-    const searchIt = e.target.value
-    useCallback(
-      setTimeout(() => { setSearch(searchIt) }, 2000)
-      , []
-    )
-  } */
 
   return (
     <>
@@ -32,10 +24,9 @@ const AddCategory = ({ setCategory }) => {
           onChange={e => setSearch(e.target.value)}
           value={search}
         />
+        <button type='submit'>Search</button>
       </form>
       {error ? <p className='error'>El campo no puede estar vacio...</p> : ''}
     </>
   )
 }
-
-export default AddCategory
