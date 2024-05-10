@@ -11,15 +11,16 @@ export const GifContextProvider = ({ children }) => {
   const [search, setSearch] = useState('')
 
   const fetchApi = (search) => {
+    setLoading(true)
     fetch(`https://api.giphy.com/v1/gifs/search?api_key=${key}&q=${search}`)
       .then(res => res.json())
       .then(data => {
-        setLoading(true)
         setData(data.data)
         // console.log(respuestaJson);
       })
       .then(console.log(data))
       .catch(error => console.log(error))
+      .finally(() => setLoading(false))
   }
 
   const debounceIt = useCallback(debounce((q) => fetchApi(q), 2000), [])
