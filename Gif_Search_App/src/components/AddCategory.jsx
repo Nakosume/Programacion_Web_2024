@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useGif } from '../hooks/useGif'
 
 export const AddCategory = ({ setCategory }) => {
-  const { search, setSearch, debounceIt, loading, data } = useGif()
+  const { search, setSearch, debounceIt } = useGif()
   const [error, setError] = useState(false)
 
   const searchGif = e => {
@@ -26,8 +26,7 @@ export const AddCategory = ({ setCategory }) => {
         />
         <button type='submit'>Search</button>
       </form>
-      <div className={!loading && search !== '' ? '' : 'none'}>{data.length} resultados para "{search}"</div>
-      {error ? <p className='error'>El campo no puede estar vacio...</p> : ''}
+      {error ? <p className='error'>Add some text</p> : ''}
     </>
   )
 }

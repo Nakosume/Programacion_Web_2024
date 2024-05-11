@@ -1,17 +1,27 @@
 import { useState } from 'react'
-import { AddCategory } from './components/AddCategory'
-import { DisplayGifs } from './components/DisplayGifs'
-import { DisplayFavs } from './components/DisplayFavs'
+
+import { AddCategory, DisplayGifs, DisplayFavs } from './components'
 
 function App () {
-  const [category, setCategory] = useState('')
+  const [showFav, setShowFav] = useState(false)
+
+  function handleChange () {
+    setShowFav(!showFav)
+  }
 
   return (
     <div className='App'>
-      <h2>Gifs Expert App</h2>
-      <AddCategory setCategory={setCategory} />
-      <DisplayFavs />
-      <DisplayGifs category={category} />
+      <h2>Gifs Search App</h2>
+      <AddCategory />
+      <button onClick={handleChange}>
+        {!showFav
+          ? <>Show Favs</>
+          : <>Hide Favs</>}
+      </button>
+      {!showFav
+        ? <DisplayGifs />
+        : <DisplayFavs />}
+
     </div>
   )
 }

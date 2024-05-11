@@ -4,11 +4,13 @@ import { ImageItem } from './ImageItem'
 // data.lenght > 0
 
 export const DisplayGifs = () => {
-  const { data, loading, addFav } = useGif()
+  const { data, loading, addFav, search } = useGif()
 
   return (
-    <div className='container-gifs'>
-      {
+    <div className={!loading && search !== '' ? 'gif-disp' : 'none'}>
+      <h3 className='counter'>{data.length} results for "{search}"</h3>
+      <div className='container-gifs'>
+        {
                 loading
                   ? <div className='loader'>loading...</div>
                   : (data.length > 0
@@ -17,6 +19,7 @@ export const DisplayGifs = () => {
                       ))
                       : <div>Oe mano, buscate alguito</div>)
             }
+      </div>
     </div>
 
   )

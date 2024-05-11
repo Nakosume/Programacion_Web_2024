@@ -7,8 +7,8 @@ export const DisplayFavs = () => {
   const { fav, loading, deleteFav } = useGif()
 
   return (
-    <div className='fav-disp'>
-      <h2>Favorites</h2>
+    <div className='gif-disp'>
+      <h3>Favorites</h3>
       <div className='container-gifs'>
         {
                 loading
@@ -17,7 +17,7 @@ export const DisplayFavs = () => {
                       ? fav.map(img => (
                         <ImageItem key={img.id} img={img} title={img.title} url={img.images.downsized_medium.url} clikAction={deleteFav} />
                       ))
-                      : <div>No hay favoritos</div>)
+                      : <div>There are no favorites</div>)
             }
       </div>
     </div>
