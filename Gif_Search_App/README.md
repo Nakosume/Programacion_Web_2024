@@ -1,1 +1,0 @@
-This project was made by: Sebastian Romero
