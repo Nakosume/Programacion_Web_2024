@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // Reducer & functions
 import { useCallback, useEffect, useState } from 'react'
 import { GifContext } from './GifContext'
@@ -5,8 +6,19 @@ import debounce from 'just-debounce-it'
 
 const key = '0OgQXOAJvufNbdsE54ptzagc6G8ZP9lu'
 
+let initFavs = []
+const lclStrg = JSON.parse(window.localStorage.getItem('myFavourites'))
+if (lclStrg !== null) {
+  initFavs = lclStrg
+} else if (lclStrg === null) {
+  initFavs = []
+} else {
+  alert('Something went wrong loading the tasks!')
+}
+
 export const GifContextProvider = ({ children }) => {
   const [data, setData] = useState([])
+  const [fav, setFav] = useState(initFavs)
   const [loading, setLoading] = useState(false)
   const [search, setSearch] = useState('')
 
@@ -16,11 +28,31 @@ export const GifContextProvider = ({ children }) => {
       .then(res => res.json())
       .then(data => {
         setData(data.data)
-        // console.log(respuestaJson);
+        console.log(data.data)
       })
-      .then(console.log(data))
       .catch(error => console.log(error))
       .finally(() => setLoading(false))
+  }
+
+  const addFav = (gif) => {
+    const storedItems = JSON.parse(window.localStorage.getItem('myFavourites')) || []
+    const existingItem = storedItems.find(item => item.id === gif.id)
+
+    if (!existingItem) {
+      const items = [...storedItems, gif]
+      window.localStorage.setItem('myFavourites', JSON.stringify(items))
+      setFav([...fav, gif])
+      alert('Added to favs')
+    } else {
+      alert('Already Exist')
+    }
+  }
+
+  const deleteFav = (gif) => {
+    const storedItems = JSON.parse(window.localStorage.getItem('myFavourites')) || []
+    const items = storedItems.filter((item) => item.id !== gif.id)
+    window.localStorage.setItem('myFavourites', JSON.stringify(items))
+    setFav(items)
   }
 
   const debounceIt = useCallback(debounce((q) => fetchApi(q), 2000), [])
@@ -35,7 +67,10 @@ export const GifContextProvider = ({ children }) => {
       loading,
       setSearch,
       search,
-      debounceIt
+      debounceIt,
+      fav,
+      addFav,
+      deleteFav
     }}
     >
       {children}

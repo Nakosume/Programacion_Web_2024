@@ -4,7 +4,7 @@ import { ImageItem } from './ImageItem'
 // data.lenght > 0
 
 export const DisplayGifs = () => {
-  const { data, loading } = useGif()
+  const { data, loading, addFav } = useGif()
 
   return (
     <div className='container-gifs'>
@@ -13,7 +13,7 @@ export const DisplayGifs = () => {
                   ? <div className='loader'>loading...</div>
                   : (data.length > 0
                       ? data.map(img => (
-                        <ImageItem key={img.id} title={img.title} url={img.images.downsized_medium.url} />
+                        <ImageItem key={img.id} img={img} title={img.title} url={img.images.downsized_medium.url} clikAction={addFav} />
                       ))
                       : <div>Oe mano, buscate alguito</div>)
             }
