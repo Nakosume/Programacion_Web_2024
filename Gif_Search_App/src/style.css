@@ -17,9 +17,9 @@
 
   font-size: 20px;
   --font-size: 18px;
-  --color1: #31122f;
-  --color2: #ffa500;
-  --colorLow: #412a00;
+  --color1: #008080;
+  --color2: #f5ffc1;
+  --colorLow: #f5ffc196;
 }
 
 .none{
