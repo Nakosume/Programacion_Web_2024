@@ -42,9 +42,9 @@ export const GifContextProvider = ({ children }) => {
       const items = [...storedItems, gif]
       window.localStorage.setItem('myFavourites', JSON.stringify(items))
       setFav([...fav, gif])
-      alert('Added to favs')
+      alert('Added to favorites')
     } else {
-      alert('Already Exist')
+      alert('Already exist on favorites')
     }
   }
 
@@ -53,6 +53,7 @@ export const GifContextProvider = ({ children }) => {
     const items = storedItems.filter((item) => item.id !== gif.id)
     window.localStorage.setItem('myFavourites', JSON.stringify(items))
     setFav(items)
+    alert('Removed from favs')
   }
 
   const debounceIt = useCallback(debounce((q) => fetchApi(q), 2000), [])
