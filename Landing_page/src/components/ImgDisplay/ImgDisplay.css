@@ -1,0 +1,30 @@
+.imgContainer {
+    max-width: 100%;
+    
+    display: flex;
+    padding-right: 4vw;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.banner-img{
+    
+    width:92vw; 
+    padding-left: 4vw;
+      
+}
+
+@media(min-width: 431px){
+    .imgContainer {
+        padding-right: 4vw;
+    }
+    
+    .banner-img{
+        
+        width:44vw; 
+        padding-left: 4vw;
+          
+    }
+}

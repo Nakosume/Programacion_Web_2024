@@ -1,0 +1,116 @@
+header {
+    position: sticky;
+    top: 0px;
+    width: auto;
+    height: 'auto';
+    background: linear-gradient(90deg, rgba(48, 46, 73, 1) 18%, rgba(50, 50, 130, 1) 60%, rgba(96, 123, 184, 1) 100%);
+    margin-bottom: 2vh;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.icon {
+    height: 9vh;
+    width: auto;
+}
+
+.hambur-ico {
+    height: 2vh;
+    width: auto;
+    position: absolute;
+    left: 2vh;
+    top: 3vh;
+}
+
+.opt-container {
+    width: 100vw;
+}
+
+.hidden {
+    display: none;
+}
+
+.dropdown {
+    width: 100%;
+    height: 100%;
+}
+
+.dropdown .opts {
+    font-size: larger;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    transition: 0.5s;
+}
+
+.dropdown:hover .opts {
+    background: linear-gradient(90deg, rgba(188, 255, 255, 0.409) 0%, rgba(96, 123, 184, 0) 75%);
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+@media(min-width: 431px) {
+    header {
+        display: flex;
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .hambur-ico {
+        display: none;
+    }
+
+    .hidden {
+        display: block;
+    }
+
+    .opt-container {
+        width: 45vw;
+        height: 87.3px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .dropdown-content {
+        position: absolute;
+    }
+
+    .dropdown:hover .opts {
+        background: linear-gradient(0deg, rgba(188, 255, 255, 0.409) 0%, rgba(96, 123, 184, 0) 75%);
+    }
+}
